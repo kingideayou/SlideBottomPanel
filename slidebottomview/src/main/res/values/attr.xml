@@ -3,6 +3,9 @@
 
     <declare-styleable name="SlideBottomView">
         <attr name="sbv_background_layout" format="reference"/>
+        <attr name="sbv_title_height_no_display" format="dimension"/>
+        <attr name="sbv_panel_height" format="dimension"/>
+        <attr name="sbv_boundary" format="boolean"/>
     </declare-styleable>
 
 </resources>
