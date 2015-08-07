@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SlideBottomPanel">
+        <attr name="sbp_background_layout" format="reference"/>
+        <attr name="sbp_title_height_no_display" format="dimension"/>
+        <attr name="sbp_panel_height" format="dimension"/>
+        <attr name="sbp_boundary" format="boolean"/>
+        <attr name="sbp_move_distance_trigger" format="dimension"/>
+        <attr name="sbp_animation_duration" format="integer"/>
+        <attr name="sbp_fade" format="boolean"/>
+    </declare-styleable>
+
+</resources>
