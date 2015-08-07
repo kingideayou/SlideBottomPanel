@@ -5,11 +5,11 @@
                 android:layout_height="match_parent"
                 tools:context=".MainActivity">
 
-    <me.next.slidebottomview.SlideBottomView
+    <me.next.slidebottompanel.SlideBottomPanel
         android:id="@+id/sbv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:sbv_background_layout="@layout/background_layout">
+        app:sbp_background_layout="@layout/background_layout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,8 +58,110 @@
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="555555"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
         </LinearLayout>
 
-    </me.next.slidebottomview.SlideBottomView>
+    </me.next.slidebottompanel.SlideBottomPanel>
 
 </RelativeLayout>

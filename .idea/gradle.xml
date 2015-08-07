@@ -9,8 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/SlideBottomPanel" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/slidebottomview" />
           </set>
         </option>
       </GradleProjectSettings>

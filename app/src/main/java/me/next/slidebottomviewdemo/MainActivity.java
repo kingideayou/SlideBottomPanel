@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
-import me.next.slidebottomview.SlideBottomView;
+import me.next.slidebottompanel.SlideBottomPanel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SlideBottomView sbv = (SlideBottomView) findViewById(R.id.sbv);
+        SlideBottomPanel sbv = (SlideBottomPanel) findViewById(R.id.sbv);
         webView = (WebView) findViewById(R.id.wv_main);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(webUrl);
