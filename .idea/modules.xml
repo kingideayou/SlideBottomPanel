@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SlideBottomPanel/SlideBottomPanel.iml" filepath="$PROJECT_DIR$/SlideBottomPanel/SlideBottomPanel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SlideBottomView.iml" filepath="$PROJECT_DIR$/SlideBottomView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SlideBottomViewDemo.iml" filepath="$PROJECT_DIR$/SlideBottomViewDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -178,7 +179,7 @@ public class SlideBottomPanel extends FrameLayout {
         } else if (!isPanelShowing && pressDuration < MAX_CLICK_TIME &&
                 distance(firstDownX, firstDownY, event.getX(), event.getY()) < MAX_CLICK_DISTANCE) {
             displayPanel();
-        } else if (!isPanelShowing && isDragging &&  ((event.getY() - firstDownY > 0) ||
+        } else if (!isPanelShowing && isDragging && ((event.getY() - firstDownY > 0) ||
                 Math.abs(event.getY() - firstDownY) < mMoveDistanceToTrigger)){
             hidePanel();
         }
@@ -220,6 +221,14 @@ public class SlideBottomPanel extends FrameLayout {
             deltaY = event.getY() - downY;
             downY = event.getY();
             View touchingView = findViewWithTag(TAG_PANEL);
+            if (mDarkFrameLayout != null && mIsFade) {
+                float currentY = ViewHelper.getY(touchingView);
+                if (currentY > mMeasureHeight - mPanelHeight &&
+                        currentY < mMeasureHeight - mTitleHeightNoDisplay){
+                    mDarkFrameLayout.fade(
+                            (int)((1 - currentY / (mMeasureHeight - mTitleHeightNoDisplay)) * DarkFrameLayout.MAX_ALPHA));
+                }
+            }
             if (!mBoundary) {
                 touchingView.offsetTopAndBottom((int)deltaY);
             } else {
@@ -319,9 +328,11 @@ public class SlideBottomPanel extends FrameLayout {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (float) animation.getAnimatedValue();
                 ViewHelper.setY(mPanel, value);
-                if (mDarkFrameLayout != null && mIsFade) {
+                if (mDarkFrameLayout != null && mIsFade
+                        && mDarkFrameLayout.getCurrentAlpha() != DarkFrameLayout.MAX_ALPHA) {
                     mDarkFrameLayout.fade(
-                            (int) ((1 - (value - mMeasureHeight + mPanelHeight) / distance) * DarkFrameLayout.MAX_ALPHA));
+                            (int) ((1 - value / (mMeasureHeight - mTitleHeightNoDisplay)) * DarkFrameLayout.MAX_ALPHA));
+//                            (int) ((1 - (value - mMeasureHeight + mPanelHeight) / distance) * DarkFrameLayout.MAX_ALPHA));
                 }
             }
         });
@@ -333,6 +344,7 @@ public class SlideBottomPanel extends FrameLayout {
 
             @Override
             public void onAnimationEnd(Animator animation) {
+//                mDarkFrameLayout.fade(DarkFrameLayout.MAX_ALPHA);
                 isAnimating = false;
                 isPanelShowing = true;
             }

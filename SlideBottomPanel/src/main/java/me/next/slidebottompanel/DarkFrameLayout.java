@@ -55,6 +55,10 @@ public class DarkFrameLayout extends FrameLayout {
         return slideBottomPanel.isPanelShowing();
     }
 
+    public int getCurrentAlpha() {
+        return alpha;
+    }
+
     public SlideBottomPanel getSlideBottomPanel() {
         return slideBottomPanel;
     }
