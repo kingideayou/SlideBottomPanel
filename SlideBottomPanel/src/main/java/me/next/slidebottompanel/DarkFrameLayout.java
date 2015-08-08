@@ -36,6 +36,10 @@ public class DarkFrameLayout extends FrameLayout {
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
+        drawFade(canvas);
+    }
+
+    private void drawFade(Canvas canvas) {
         mFadePaint.setColor(Color.argb(alpha, 0, 0, 0));
         canvas.drawRect(0, 0, getMeasuredWidth(), getHeight(), mFadePaint);
     }
@@ -57,10 +61,6 @@ public class DarkFrameLayout extends FrameLayout {
 
     public int getCurrentAlpha() {
         return alpha;
-    }
-
-    public SlideBottomPanel getSlideBottomPanel() {
-        return slideBottomPanel;
     }
 
     public void setSlideBottomPanel(SlideBottomPanel slideBottomPanel) {

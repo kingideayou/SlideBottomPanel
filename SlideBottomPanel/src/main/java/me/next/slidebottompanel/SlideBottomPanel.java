@@ -59,7 +59,6 @@ public class SlideBottomPanel extends FrameLayout {
     private int mMeasureHeight;
     private float firstDownX;
     private float firstDownY;
-    private float downX;
     private float downY;
     private float deltaY;
     private long mPressStartTime;
@@ -121,15 +120,24 @@ public class SlideBottomPanel extends FrameLayout {
         int t = (int) (mMeasureHeight - mTitleHeightNoDisplay);
         for (int i = 0; i < mChildCount; i++) {
             View childView = getChildAt(i);
-            if (childView.getTag() == null ||
-                    (int) childView.getTag() != TAG_BACKGROUND) {
+            if (childView.getTag() == null || (int) childView.getTag() != TAG_BACKGROUND) {
                 childView.layout(0, t, childView.getMeasuredWidth(), childView.getMeasuredHeight() + t);
                 childView.setTag(TAG_PANEL);
-            } else {
+            } else if (childView.getTag() == TAG_BACKGROUND){
                 childView.layout(0, 0, childView.getMeasuredWidth(), childView.getMeasuredHeight());
                 childView.setPadding(0, 0, 0, (int)mTitleHeightNoDisplay);
             }
         }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return isDragging;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return true;
     }
 
     @Override
@@ -205,7 +213,7 @@ public class SlideBottomPanel extends FrameLayout {
         if (!isPanelOnTouch) {
             return;
         }
-        if (supportScrollInView((int) (firstDownY - event.getY()))) {
+        if (isPanelShowing && supportScrollInView((int) (firstDownY - event.getY()))) {
             return;
         }
         computeVelocity();
@@ -234,19 +242,19 @@ public class SlideBottomPanel extends FrameLayout {
             } else {
                 float touchingViewY = ViewHelper.getY(touchingView);
                 if (touchingViewY + deltaY <= mMeasureHeight - mPanelHeight) {
-                    touchingView.offsetTopAndBottom((int)(mMeasureHeight - mPanelHeight - touchingViewY));
+                    touchingView.offsetTopAndBottom((int) (mMeasureHeight - mPanelHeight - touchingViewY));
                 } else if (touchingViewY + deltaY >= mMeasureHeight - mTitleHeightNoDisplay) {
-                    touchingView.offsetTopAndBottom((int)(mMeasureHeight - mTitleHeightNoDisplay - touchingViewY));
+                    touchingView.offsetTopAndBottom((int) (mMeasureHeight - mTitleHeightNoDisplay - touchingViewY));
                 } else {
-                    touchingView.offsetTopAndBottom((int)deltaY);
+                    touchingView.offsetTopAndBottom((int) deltaY);
                 }
             }
         }
     }
 
     private boolean handleActionDown(MotionEvent event) {
+        boolean isConsume = false;
         mPressStartTime = System.currentTimeMillis();
-        boolean isConsume;
         firstDownX = event.getX();
         firstDownY = downY = event.getY();
         if (!isPanelShowing && downY > mMeasureHeight - mTitleHeightNoDisplay) {
@@ -254,13 +262,9 @@ public class SlideBottomPanel extends FrameLayout {
             isConsume = true;
         } else if (isPanelShowing && downY > mMeasureHeight - mPanelHeight) {
             isPanelOnTouch = true;
-            isConsume = true;
-        } else if (isPanelShowing && downY < mMeasureHeight - mPanelHeight){
+        } else if (isPanelShowing && downY < mMeasureHeight - mPanelHeight) {
             hidePanel();
             isPanelOnTouch = false;
-            isConsume = false;
-        } else {
-            isConsume = false;
         }
         return isConsume;
     }
@@ -318,7 +322,6 @@ public class SlideBottomPanel extends FrameLayout {
             mDarkFrameLayout.fade(true);
         }
         final View mPanel = findViewWithTag(TAG_PANEL);
-        final float distance = ViewHelper.getY(mPanel) - mMeasureHeight + mPanelHeight;
         ValueAnimator animator = ValueAnimator.ofFloat(ViewHelper.getY(mPanel), mMeasureHeight - mPanelHeight)
                 .setDuration(mAnimationDuration);
         animator.setTarget(mPanel);
@@ -332,7 +335,6 @@ public class SlideBottomPanel extends FrameLayout {
                         && mDarkFrameLayout.getCurrentAlpha() != DarkFrameLayout.MAX_ALPHA) {
                     mDarkFrameLayout.fade(
                             (int) ((1 - value / (mMeasureHeight - mTitleHeightNoDisplay)) * DarkFrameLayout.MAX_ALPHA));
-//                            (int) ((1 - (value - mMeasureHeight + mPanelHeight) / distance) * DarkFrameLayout.MAX_ALPHA));
                 }
             }
         });
@@ -344,9 +346,7 @@ public class SlideBottomPanel extends FrameLayout {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-//                mDarkFrameLayout.fade(DarkFrameLayout.MAX_ALPHA);
                 isAnimating = false;
-                isPanelShowing = true;
             }
 
             @Override
@@ -360,6 +360,11 @@ public class SlideBottomPanel extends FrameLayout {
         });
         animator.start();
         isPanelShowing = true;
+    }
+
+    public void hide() {
+        if(!isPanelShowing) return;
+        hidePanel();
     }
 
     private void computeVelocity() {
@@ -398,11 +403,11 @@ public class SlideBottomPanel extends FrameLayout {
 
     private View findTopChildUnder(ViewGroup parentView, float x, float y) {
         int childCount = parentView.getChildCount();
-        //TODO fori or forr
         for (int i = childCount - 1; i >= 0; i--) {
             final View child = parentView.getChildAt(i);
             if (x >= child.getLeft() && x < child.getRight() &&
-                    y >= child.getTop() && y < child.getBottom()) {
+                    y >= child.getTop() + mMeasureHeight - mPanelHeight &&
+                    y < child.getBottom()  + mMeasureHeight - mPanelHeight) {
                 return child;
             }
         }
@@ -441,11 +446,11 @@ public class SlideBottomPanel extends FrameLayout {
 
         int scrollRange = scrollView.getChildAt(0).getBottom();
         final int scrollY = scrollView.getScrollY();
-        final int overscrollBottom = Math.max(0, scrollRange - contentHeight);
+        final int overScrollBottom = Math.max(0, scrollRange - contentHeight);
         if (scrollY < 0) {
             scrollRange -= scrollY;
-        } else if (scrollY > overscrollBottom) {
-            scrollRange += scrollY - overscrollBottom;
+        } else if (scrollY > overScrollBottom) {
+            scrollRange += scrollY - overScrollBottom;
         }
 
         return scrollRange;

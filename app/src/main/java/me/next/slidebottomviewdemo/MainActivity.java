@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String webUrl = "http://www.zhihu.com/question/29416073/answer/44340933";
     private WebView webView;
+    private SlideBottomPanel sbv;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SlideBottomPanel sbv = (SlideBottomPanel) findViewById(R.id.sbv);
+        sbv = (SlideBottomPanel) findViewById(R.id.sbv);
         webView = (WebView) findViewById(R.id.wv_main);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(webUrl);
@@ -39,4 +40,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (sbv.isPanelShowing()) {
+            sbv.hide();
+            return;
+        }
+        super.onBackPressed();
+    }
 }
