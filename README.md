@@ -1,5 +1,5 @@
 # SlideBottomPanel
-底部划出视图，轻松实现「知乎日报β版」效果（目测效果比现在的β版要好一点~）  
+底部划出视图，轻松实现「知乎日报β版」效果（效果见底部效果图）  
 可以划出的视图可以包裹 ListView 及 ScrollView。并且 ListView 及 ScrollView 可以在第二级或第三级视图中。  
 Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingideayou/SlideBottomPanel/raw/master/apk/SlideBottomPanelDemo.apk)
 
