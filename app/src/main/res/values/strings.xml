@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_input">InputActivity</string>
+    <string name="input_some_thing">不友善的言论会被删除，深度讨论会被优先展示。</string>
+    <string name="zuo_zhi_hu">xxx: 用知乎不如做知乎。</string>
 </resources>

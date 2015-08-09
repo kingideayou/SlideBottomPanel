@@ -10,127 +10,169 @@
         android:id="@+id/sbv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:sbp_title_height_no_display="45dip"
-        app:sbp_panel_height="380dip"
+        app:sbp_title_height_no_display="55dp"
+        app:sbp_panel_height="380dp"
         app:sbp_background_layout="@layout/background_layout">
 
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="380dip"
+            android:layout_height="380dp"
             android:background="#ffffff"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
+                android:weightSum="9"
                 android:layout_width="match_parent"
-                android:layout_height="45dip"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="111111"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
+                <ScrollView
+                    android:layout_weight="8"
                     android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="@string/zuo_zhi_hu"/>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <TextView
+                    android:id="@+id/tv_edit"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:text="写点评..."/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:background="@drawable/panel_title_background">
+
+                <ImageView
+                    android:id="@+id/iv_1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:contentDescription="@string/hello_world"
+                    android:src="@android:drawable/ic_menu_edit"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@+id/iv_1"
+                    android:layout_marginLeft="26dp"
+                    android:contentDescription="@string/hello_world"
+                    android:src="@android:drawable/ic_menu_share"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:contentDescription="@string/hello_world"
+                    android:src="@android:drawable/ic_menu_compass"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
+            </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:gravity="center"
-                        android:text="@string/hello_world"/>
-
-                    <!--<EditText-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:hint="@string/hello_world"/>-->
-
-                </LinearLayout>
-
-            </ScrollView>
-
-        </LinearLayout>
+        </FrameLayout>
 
     </me.next.slidebottompanel.SlideBottomPanel>
 

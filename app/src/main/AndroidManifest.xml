@@ -18,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".InputActivity"
+            android:label="@string/title_activity_input" >
+        </activity>
     </application>
 
 </manifest>

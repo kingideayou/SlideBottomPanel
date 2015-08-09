@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -228,7 +230,10 @@ public class SlideBottomPanel extends FrameLayout {
         if (isDragging) {
             deltaY = event.getY() - downY;
             downY = event.getY();
+
             View touchingView = findViewWithTag(TAG_PANEL);
+            hidePanelTitle(touchingView);
+
             if (mDarkFrameLayout != null && mIsFade) {
                 float currentY = ViewHelper.getY(touchingView);
                 if (currentY > mMeasureHeight - mPanelHeight &&
@@ -312,6 +317,14 @@ public class SlideBottomPanel extends FrameLayout {
             }
         });
         animator.start();
+        //直接显示 Title ，隐藏 Panel 的动画会出现明显的跳动
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                showPanelTitle(mPanel);
+            }
+        }, mAnimationDuration / 5 * 4);
     }
 
     private void displayPanel() {
@@ -360,6 +373,29 @@ public class SlideBottomPanel extends FrameLayout {
         });
         animator.start();
         isPanelShowing = true;
+        hidePanelTitle(mPanel);
+    }
+
+    private void showPanelTitle(View panel) {
+        if (panel instanceof FrameLayout) {
+            try {
+                if (((FrameLayout) panel).getChildAt(1).getVisibility() != View.VISIBLE) {
+                    ((FrameLayout) panel).getChildAt(1).setVisibility(View.VISIBLE);
+                }
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void hidePanelTitle(View panel) {
+        if (panel instanceof FrameLayout) {
+            try {
+                ((FrameLayout) panel).getChildAt(1).setVisibility(View.GONE);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void hide() {
@@ -375,6 +411,7 @@ public class SlideBottomPanel extends FrameLayout {
     }
 
     private boolean supportScrollInView(int direction) {
+
         View view = findViewWithTag(TAG_PANEL);
         if (view instanceof ViewGroup) {
             View childView = findTopChildUnder((ViewGroup) view, firstDownX, firstDownY);
@@ -395,7 +432,31 @@ public class SlideBottomPanel extends FrameLayout {
                 } else {
                     return scrollViewCanScrollVertically(scrollView, direction);
                 }
+
+            } else if (childView instanceof ViewGroup){
+                View grandchildView = findTopChildUnder((ViewGroup) childView, firstDownX, firstDownY);
+                if (grandchildView == null) {
+                    return false;
+                }
+                if (grandchildView instanceof ViewGroup) {
+                    if (grandchildView instanceof AbsListView) {
+                        AbsListView absListView = (AbsListView) grandchildView;
+                        if (Build.VERSION.SDK_INT >= 19) {
+                            return absListView.canScrollList(direction);
+                        } else {
+                            return absListViewCanScrollList(absListView,direction);
+                        }
+                    } else if (grandchildView instanceof ScrollView) {
+                        ScrollView scrollView = (ScrollView) grandchildView;
+                        if (Build.VERSION.SDK_INT >= 14) {
+                            return scrollView.canScrollVertically(direction);
+                        } else {
+                            return scrollViewCanScrollVertically(scrollView, direction);
+                        }
+                    }
+                }
             }
+
 
         }
         return false;
