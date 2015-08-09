@@ -57,6 +57,7 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
     </me.next.slidebottompanel.SlideBottomPanel>
     
 同时也支持复杂一点的效果（知乎日报β版），子视图 FrameLayout 中包含 ViewGroup，ViewGroup 包含 ListView 或 ScrollView
+    
     <me.next.slidebottompanel.SlideBottomPanel
         android:id="@+id/sbv"
         android:layout_width="match_parent"
@@ -65,8 +66,8 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
         app:sbp_title_height_no_display="55dp"
         app:sbp_panel_height="380dp"
         app:sbp_background_layout="@layout/background_layout">
-
-
+      
+      
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="380dp"
