@@ -9,6 +9,7 @@
         <attr name="sbp_move_distance_trigger" format="dimension"/>
         <attr name="sbp_animation_duration" format="integer"/>
         <attr name="sbp_fade" format="boolean"/>
+        <attr name="sbp_hide_panel_title" format="boolean"/>
     </declare-styleable>
 
 </resources>

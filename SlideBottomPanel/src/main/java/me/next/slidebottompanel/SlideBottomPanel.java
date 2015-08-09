@@ -43,6 +43,7 @@ public class SlideBottomPanel extends FrameLayout {
     private static final int MAX_CLICK_TIME = 300;
     private static final boolean DEFAULT_FADE = true;
     private static final boolean DEFAULT_BOUNDARY = true;
+    private static final boolean DEFAULT_HIDE_PANEL_TITLE = false;
 
     private static float MAX_CLICK_DISTANCE = 5;
 
@@ -73,6 +74,7 @@ public class SlideBottomPanel extends FrameLayout {
     private int mAnimationDuration;
     private boolean mIsFade = true;
     private boolean mBoundary = true;
+    private boolean mHidePanelTitle = false;
     private boolean isPanelOnTouch = false;
 
     private Interpolator mOpenAnimationInterpolator = new AccelerateInterpolator();
@@ -108,6 +110,7 @@ public class SlideBottomPanel extends FrameLayout {
         MAX_CLICK_DISTANCE = mTitleHeightNoDisplay = a.getDimension(R.styleable.SlideBottomPanel_sbp_title_height_no_display,dp2px(DEFAULT_TITLE_HEIGHT_NO_DISPLAY));
         mMoveDistanceToTrigger = a.getDimension(R.styleable.SlideBottomPanel_sbp_move_distance_trigger, dp2px(DEFAULT_MOVE_DISTANCE_TO_TRIGGER));
         mAnimationDuration = a.getInt(R.styleable.SlideBottomPanel_sbp_animation_duration, DEFAULT_ANIMATION_DURATION);
+        mHidePanelTitle = a.getBoolean(R.styleable.SlideBottomPanel_sbp_hide_panel_title, DEFAULT_HIDE_PANEL_TITLE);
         mIsFade = a.getBoolean(R.styleable.SlideBottomPanel_sbp_fade, DEFAULT_FADE);
 
         a.recycle();
@@ -389,7 +392,7 @@ public class SlideBottomPanel extends FrameLayout {
     }
 
     private void hidePanelTitle(View panel) {
-        if (panel instanceof FrameLayout) {
+        if (panel instanceof FrameLayout && mHidePanelTitle) {
             try {
                 ((FrameLayout) panel).getChildAt(1).setVisibility(View.GONE);
             } catch (NullPointerException e) {

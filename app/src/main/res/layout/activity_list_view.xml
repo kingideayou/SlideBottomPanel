@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
+
+    <me.next.slidebottompanel.SlideBottomPanel
+        android:id="@+id/sbv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:sbp_title_height_no_display="55dp"
+        app:sbp_panel_height="380dp"
+        app:sbp_background_layout="@layout/background_layout">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:background="#ffffff">
+
+                <ImageView
+                    android:id="@+id/iv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/hello_world"
+                    android:src="@android:drawable/ic_menu_edit"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@+id/iv_1"
+                    android:layout_marginLeft="26dp"
+                    android:contentDescription="@string/hello_world"
+                    android:src="@android:drawable/ic_menu_share"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:contentDescription="@string/hello_world"
+                    android:src="@android:drawable/ic_menu_compass"/>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+    </me.next.slidebottompanel.SlideBottomPanel>
+
+</LinearLayout>

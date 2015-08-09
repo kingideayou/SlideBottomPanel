@@ -10,6 +10,7 @@
         android:id="@+id/sbv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:sbp_hide_panel_title="true"
         app:sbp_title_height_no_display="55dp"
         app:sbp_panel_height="380dp"
         app:sbp_background_layout="@layout/background_layout">

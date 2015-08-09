@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="20dp"
+              tools:context="me.next.slidebottomviewdemo.SelectActivity">
+
+    <TextView
+        android:id="@+id/tv_zhihu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="知乎β版效果"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_selector"
+        android:padding="12dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="ListView 效果"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_selector"
+        android:padding="12dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="ScrollView 效果"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_selector"
+        android:padding="12dp"
+        />
+
+</LinearLayout>
