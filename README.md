@@ -128,7 +128,7 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 动图展示:
 
 <img src="https://github.com/kingideayou/SlideBottomPanel/blob/master/imgs/demo_zhihu.gif" width = "380" height = "620" alt="知乎效果" align=center />
-<img src="https://github.com/kingideayou/SlideBottomPanel/blob/master/imgs/demo_list_view.gif" width = "380" height = "620" alt="ListView 效果" align=center />
+<img src="https://github.com/kingideayou/SlideBottomPanel/blob/master/imgs/demo_list_view.gif" width = "380" height = "620" alt="ListView 效果" align=center />  
 
 
 #### 此项目的完成要感谢 [MultiCardMenu](https://github.com/wujingchao/MultiCardMenu)
