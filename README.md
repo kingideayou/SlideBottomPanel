@@ -6,6 +6,11 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 # How to use 如何使用
 
 ###导入项目
+
+##### Gradle  
+      compile 'com.github.kingideayou:SlideBottomPanel:1.0.2'
+##### Import  
+
 首先下载 SlideBottomPanel，将 SlideBottomPanel 文件夹拷贝到项目的目录下面，然后在setting.gradle文件中增加文件夹名称
 
       include ":SlideBottomPanel"
