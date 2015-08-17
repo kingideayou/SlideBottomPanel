@@ -3,12 +3,15 @@
 可以划出的视图可以包裹 ListView 及 ScrollView。并且 ListView 及 ScrollView 可以在第二级或第三级视图中。  
 Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingideayou/SlideBottomPanel/raw/master/apk/SlideBottomPanelDemo.apk)
 
+## 更新日志
+*  1.0.3 版本修复了多重嵌套时，隐藏 PanelTitle 时 Panel 出现跳动的 Bug
+
 # How to use 如何使用
 
 ###导入项目
 
 ##### Gradle  
-      compile 'com.github.kingideayou:SlideBottomPanel:1.0.2'
+      compile 'com.github.kingideayou:SlideBottomPanel:1.0.3'
 ##### Import  
 
 首先下载 SlideBottomPanel，将 SlideBottomPanel 文件夹拷贝到项目的目录下面，然后在setting.gradle文件中增加文件夹名称
