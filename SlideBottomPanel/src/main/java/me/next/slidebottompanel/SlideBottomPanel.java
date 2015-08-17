@@ -5,9 +5,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
-import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -18,7 +16,6 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -128,6 +125,9 @@ public class SlideBottomPanel extends FrameLayout {
             if (childView.getTag() == null || (int) childView.getTag() != TAG_BACKGROUND) {
                 childView.layout(0, t, childView.getMeasuredWidth(), childView.getMeasuredHeight() + t);
                 childView.setTag(TAG_PANEL);
+//                if (childView instanceof ViewGroup) {
+//                    ((ViewGroup)childView).setClipChildren(false);
+//                }
             } else if (childView.getTag() == TAG_BACKGROUND){
                 childView.layout(0, 0, childView.getMeasuredWidth(), childView.getMeasuredHeight());
                 childView.setPadding(0, 0, 0, (int)mTitleHeightNoDisplay);
@@ -235,7 +235,10 @@ public class SlideBottomPanel extends FrameLayout {
             downY = event.getY();
 
             View touchingView = findViewWithTag(TAG_PANEL);
-            hidePanelTitle(touchingView);
+
+            if (mHidePanelTitle && isPanelShowing) {
+                hidePanelTitle(touchingView);
+            }
 
             if (mDarkFrameLayout != null && mIsFade) {
                 float currentY = ViewHelper.getY(touchingView);
@@ -307,12 +310,14 @@ public class SlideBottomPanel extends FrameLayout {
             public void onAnimationEnd(Animator animation) {
                 isAnimating = false;
                 isPanelShowing = false;
+                showPanelTitle(mPanel);
             }
 
             @Override
             public void onAnimationCancel(Animator animation) {
                 isAnimating = false;
                 isPanelShowing = false;
+                showPanelTitle(mPanel);
             }
 
             @Override
@@ -320,14 +325,6 @@ public class SlideBottomPanel extends FrameLayout {
             }
         });
         animator.start();
-        //直接显示 Title ，隐藏 Panel 的动画会出现明显的跳动
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                showPanelTitle(mPanel);
-            }
-        }, mAnimationDuration / 5 * 4);
     }
 
     private void displayPanel() {
@@ -380,10 +377,12 @@ public class SlideBottomPanel extends FrameLayout {
     }
 
     private void showPanelTitle(View panel) {
-        if (panel instanceof FrameLayout) {
+        if (panel instanceof ViewGroup && mHidePanelTitle) {
             try {
-                if (((FrameLayout) panel).getChildAt(1).getVisibility() != View.VISIBLE) {
-                    ((FrameLayout) panel).getChildAt(1).setVisibility(View.VISIBLE);
+                View childView = ((ViewGroup) panel).getChildAt(1);
+                if (childView.getVisibility() != View.VISIBLE) {
+                    childView.layout(0, 0, childView.getMeasuredWidth(), childView.getMeasuredHeight());
+                    childView.setVisibility(View.VISIBLE);
                 }
             } catch (NullPointerException e) {
                 e.printStackTrace();
@@ -392,9 +391,9 @@ public class SlideBottomPanel extends FrameLayout {
     }
 
     private void hidePanelTitle(View panel) {
-        if (panel instanceof FrameLayout && mHidePanelTitle) {
+        if (panel instanceof ViewGroup && mHidePanelTitle) {
             try {
-                ((FrameLayout) panel).getChildAt(1).setVisibility(View.GONE);
+                ((ViewGroup) panel).getChildAt(1).setVisibility(View.INVISIBLE);
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
