@@ -6,6 +6,11 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 # How to use 如何使用
 
 ###导入项目
+
+##### Gradle  
+      compile 'com.github.kingideayou:SlideBottomPanel:1.0.2'
+##### Import  
+
 首先下载 SlideBottomPanel，将 SlideBottomPanel 文件夹拷贝到项目的目录下面，然后在setting.gradle文件中增加文件夹名称
 
       include ":SlideBottomPanel"
@@ -130,5 +135,21 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 <img src="https://github.com/kingideayou/SlideBottomPanel/blob/master/imgs/demo_zhihu.gif" width = "380" height = "620" alt="知乎效果" align=center />
 <img src="https://github.com/kingideayou/SlideBottomPanel/blob/master/imgs/demo_list_view.gif" width = "380" height = "620" alt="ListView 效果" align=center />  
 
+## 鸣谢
+此项目的完成要感谢 [MultiCardMenu](https://github.com/wujingchao/MultiCardMenu)
 
-#### 此项目的完成要感谢 [MultiCardMenu](https://github.com/wujingchao/MultiCardMenu)
+## License
+
+    Copyright 2015 NeXT
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
