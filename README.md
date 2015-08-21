@@ -3,6 +3,8 @@
 可以划出的视图可以包裹 ListView 及 ScrollView。并且 ListView 及 ScrollView 可以在第二级或第三级视图中。  
 Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingideayou/SlideBottomPanel/raw/master/apk/SlideBottomPanelDemo.apk)
 
+<img src="https://raw.githubusercontent.com/kingideayou/SlideBottomPanel/master/imgs/SlideBottomPanel.png" width = "120" height = "120" alt="ListView 效果" align=center />  
+
 ## 更新日志
 *  1.0.3 版本修复了多重嵌套时，隐藏 PanelTitle 时 Panel 出现跳动的 Bug
 
