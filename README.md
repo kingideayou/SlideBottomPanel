@@ -1,4 +1,4 @@
-# SlideBottomPanel
+# SlideBottomPanel [![SlideBottomPanel](https://img.shields.io/badge/kingideayou-SlideBottomPanel-brightgreen.svg?style=flat)](https://github.com/kingideayou/SlideBottomPanel)
 底部划出视图，轻松实现「知乎日报β版」效果（效果见底部效果图）  
 可以划出的视图可以包裹 ListView 及 ScrollView。并且 ListView 及 ScrollView 可以在第二级或第三级视图中。  
 Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingideayou/SlideBottomPanel/raw/master/apk/SlideBottomPanelDemo.apk)
