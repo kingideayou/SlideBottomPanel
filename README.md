@@ -6,6 +6,7 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 <img src="https://raw.githubusercontent.com/kingideayou/SlideBottomPanel/master/imgs/SlideBottomPanel.png" width = "120" height = "120" alt="ListView 效果" align=center />  
 
 ## 更新日志
+*  1.0.6 版本：添加了 displayPanel() 方法，直接控制视图显示
 *  1.0.3 版本修复了多重嵌套时，隐藏 PanelTitle 时 Panel 出现跳动的 Bug
 
 # How to use 如何使用
@@ -13,7 +14,7 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 ###导入项目
 
 ##### Gradle  
-      compile 'com.github.kingideayou:SlideBottomPanel:1.0.3'
+      compile 'com.github.kingideayou:SlideBottomPanel:1.0.6'
 ##### Import  
 
 首先下载 SlideBottomPanel，将 SlideBottomPanel 文件夹拷贝到项目的目录下面，然后在setting.gradle文件中增加文件夹名称
