@@ -34,6 +34,10 @@
             android:name=".ListViewActivity"
             android:label="@string/title_activity_list_view" >
         </activity>
+        <activity
+            android:name=".ViewPagerActivity"
+            android:label="@string/title_activity_view_pager" >
+        </activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -40,6 +41,15 @@ public class ListViewActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(webUrl);
         webView.setWebChromeClient(new WebChromeClient());
+
+        Button button = (Button) findViewById(R.id.button);
+        button.setVisibility(View.VISIBLE);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sbv.displayPanel();
+            }
+        });
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(new ArrayAdapter<>(getApplicationContext(), R.layout.list_item, getData()));

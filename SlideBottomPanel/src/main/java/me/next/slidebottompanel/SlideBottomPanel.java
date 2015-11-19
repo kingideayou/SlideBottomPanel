@@ -2,10 +2,12 @@ package me.next.slidebottompanel;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.app.Application;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -167,6 +169,7 @@ public class SlideBottomPanel extends FrameLayout {
                 releaseVelocityTracker();
                 break;
         }
+        Log.d("dispatchTouchEvent", "" + (isConsume || super.dispatchTouchEvent(ev)));
         return isConsume || super.dispatchTouchEvent(ev);
     }
 
@@ -243,13 +246,13 @@ public class SlideBottomPanel extends FrameLayout {
             if (mDarkFrameLayout != null && mIsFade) {
                 float currentY = ViewHelper.getY(touchingView);
                 if (currentY > mMeasureHeight - mPanelHeight &&
-                        currentY < mMeasureHeight - mTitleHeightNoDisplay){
+                        currentY < mMeasureHeight - mTitleHeightNoDisplay) {
                     mDarkFrameLayout.fade(
-                            (int)((1 - currentY / (mMeasureHeight - mTitleHeightNoDisplay)) * DarkFrameLayout.MAX_ALPHA));
+                            (int) ((1 - currentY / (mMeasureHeight - mTitleHeightNoDisplay)) * DarkFrameLayout.MAX_ALPHA));
                 }
             }
             if (!mBoundary) {
-                touchingView.offsetTopAndBottom((int)deltaY);
+                touchingView.offsetTopAndBottom((int) deltaY);
             } else {
                 float touchingViewY = ViewHelper.getY(touchingView);
                 if (touchingViewY + deltaY <= mMeasureHeight - mPanelHeight) {
@@ -271,6 +274,8 @@ public class SlideBottomPanel extends FrameLayout {
         if (!isPanelShowing && downY > mMeasureHeight - mTitleHeightNoDisplay) {
             isPanelOnTouch = true;
             isConsume = true;
+        } else if (!isPanelShowing && downY <= mMeasureHeight - mTitleHeightNoDisplay) {
+            isPanelOnTouch = false;
         } else if (isPanelShowing && downY > mMeasureHeight - mPanelHeight) {
             isPanelOnTouch = true;
         } else if (isPanelShowing && downY < mMeasureHeight - mPanelHeight) {
@@ -327,7 +332,7 @@ public class SlideBottomPanel extends FrameLayout {
         animator.start();
     }
 
-    private void displayPanel() {
+    public void displayPanel() {
         if (isPanelShowing || isAnimating) {
             return;
         }

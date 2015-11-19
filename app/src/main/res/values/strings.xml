@@ -9,4 +9,5 @@
     <string name="title_activity_select">SelectActivity</string>
     <string name="title_activity_scroll_view">ScrollViewActivity</string>
     <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="title_activity_view_pager">ViewPagerActivity</string>
 </resources>

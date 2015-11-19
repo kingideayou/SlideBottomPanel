@@ -4,6 +4,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/button"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="弹出 SlideBottomPanel"/>
+
     <WebView
         android:id="@+id/wv_main"
         android:layout_width="match_parent"

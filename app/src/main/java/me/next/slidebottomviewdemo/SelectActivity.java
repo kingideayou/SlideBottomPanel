@@ -38,6 +38,15 @@ public class SelectActivity extends AppCompatActivity {
                 Intent intent = new Intent(SelectActivity.this, ScrollViewActivity.class);
                 startActivity(intent);
             }
+
+        });
+
+        findViewById(R.id.tv_viewpager).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SelectActivity.this, ViewPagerActivity.class);
+                startActivity(intent);
+            }
         });
     }
 
