@@ -125,11 +125,14 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 ### 代码控制  
 完成布局文件后，在 Activity 中将对应的视图填充即可。
 
-    //隐藏 SlideBottomPanel
+      //隐藏 SlideBottomPanel
         if (sbv.isPanelShowing()) {
             sbv.hide();
         }
 
+
+      //显示 SlideBottomPanel
+      sbv.displayPanel()
 
 # 效果图
 
