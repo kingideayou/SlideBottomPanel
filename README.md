@@ -43,7 +43,7 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="match_parent"
             android:background="#ffffff"
             android:orientation="vertical">
 
@@ -81,7 +81,7 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
       
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="match_parent"
             android:background="#ffffff"
             android:orientation="vertical">
 

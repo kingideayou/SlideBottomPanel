@@ -124,7 +124,7 @@ public class SlideBottomPanel extends FrameLayout {
         for (int i = 0; i < mChildCount; i++) {
             View childView = getChildAt(i);
             if (childView.getTag() == null || (int) childView.getTag() != TAG_BACKGROUND) {
-                childView.layout(0, t, childView.getMeasuredWidth(), childView.getMeasuredHeight() + t);
+                childView.layout(0, t, childView.getMeasuredWidth(), (int)getmPanelHeight() + t);
                 childView.setTag(TAG_PANEL);
 //                if (childView instanceof ViewGroup) {
 //                    ((ViewGroup)childView).setClipChildren(false);
@@ -586,5 +586,8 @@ public class SlideBottomPanel extends FrameLayout {
 
     public void setmPanelHeight(int mPanelHeightDp) {
         this.mPanelHeight = dp2px(mPanelHeightDp);
+        View mPanel = findViewWithTag(TAG_PANEL);
+        //mPanel.setLayoutParams(new LayoutParams(mPanel.getWidth(), dp2px(mPanelHeightDp)));
+        //mDarkFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(mDarkFrameLayout.getWidth(), dp2px(mPanelHeightDp)));
     }
 }

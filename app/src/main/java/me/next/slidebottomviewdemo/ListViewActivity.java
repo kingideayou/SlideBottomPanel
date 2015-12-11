@@ -37,7 +37,7 @@ public class ListViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_view);
 
         sbv = (SlideBottomPanel) findViewById(R.id.sbv);
-        sbv.setmPanelHeight(100);
+        sbv.setmPanelHeight(500);
 
         webView = (WebView) findViewById(R.id.wv_main);
         webView.getSettings().setJavaScriptEnabled(true);
