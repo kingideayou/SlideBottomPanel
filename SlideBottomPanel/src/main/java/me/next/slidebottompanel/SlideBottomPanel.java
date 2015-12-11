@@ -586,8 +586,5 @@ public class SlideBottomPanel extends FrameLayout {
 
     public void setmPanelHeight(int mPanelHeightDp) {
         this.mPanelHeight = dp2px(mPanelHeightDp);
-        View mPanel = findViewWithTag(TAG_PANEL);
-        //mPanel.setLayoutParams(new LayoutParams(mPanel.getWidth(), dp2px(mPanelHeightDp)));
-        //mDarkFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(mDarkFrameLayout.getWidth(), dp2px(mPanelHeightDp)));
     }
 }
