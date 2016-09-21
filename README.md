@@ -8,8 +8,8 @@ Demo apk 下载地址：[SlideBottomPanelDemo 下载](https://github.com/kingide
   
  
 ## 推荐使用 Android Support Library 23.2 提供的 BottomSheet
-[Android Support Library 23.2](http://android-developers.blogspot.com/2016/02/android-support-library-232.html)  
-[Teach you how to use Design Support Library: Bottom Sheets](https://github.com/android-cjj/BottomSheets)
+了解更多：[Android Support Library 23.2](http://android-developers.blogspot.com/2016/02/android-support-library-232.html)  
+如何使用：[Teach you how to use Design Support Library: Bottom Sheets](https://github.com/android-cjj/BottomSheets)
 
 ## 更新日志
 *  1.0.6 版本：添加了 displayPanel() 方法，直接控制视图显示
