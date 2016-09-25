@@ -2,7 +2,6 @@ package me.next.slidebottompanel;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
-import android.app.Application;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
@@ -125,7 +124,7 @@ public class SlideBottomPanel extends FrameLayout {
         for (int i = 0; i < mChildCount; i++) {
             View childView = getChildAt(i);
             if (childView.getTag() == null || (int) childView.getTag() != TAG_BACKGROUND) {
-                childView.layout(0, t, childView.getMeasuredWidth(), childView.getMeasuredHeight() + t);
+                childView.layout(0, t, childView.getMeasuredWidth(), (int)getmPanelHeight() + t);
                 childView.setTag(TAG_PANEL);
 //                if (childView instanceof ViewGroup) {
 //                    ((ViewGroup)childView).setClipChildren(false);
@@ -203,11 +202,11 @@ public class SlideBottomPanel extends FrameLayout {
         if (isPanelShowing) {
             View mPanel = findViewWithTag(TAG_PANEL);
             float currentY = ViewHelper.getY(mPanel);
-            if (currentY < (mMeasureHeight - mPanelHeight) ||
-                    currentY < (mMeasureHeight - mPanelHeight + mMoveDistanceToTrigger)) {
-                ObjectAnimator.ofFloat(mPanel, "y", currentY, mMeasureHeight - mPanelHeight)
+            if (currentY < (mMeasureHeight - getmPanelHeight()) ||
+                    currentY < (mMeasureHeight - getmPanelHeight() + mMoveDistanceToTrigger)) {
+                ObjectAnimator.ofFloat(mPanel, "y", currentY, mMeasureHeight - getmPanelHeight())
                         .setDuration(mAnimationDuration).start();
-            } else if (currentY > mMeasureHeight - mPanelHeight + mMoveDistanceToTrigger){
+            } else if (currentY > mMeasureHeight - getmPanelHeight() + mMoveDistanceToTrigger){
                 hidePanel();
             }
         }
@@ -245,7 +244,7 @@ public class SlideBottomPanel extends FrameLayout {
 
             if (mDarkFrameLayout != null && mIsFade) {
                 float currentY = ViewHelper.getY(touchingView);
-                if (currentY > mMeasureHeight - mPanelHeight &&
+                if (currentY > mMeasureHeight - getmPanelHeight() &&
                         currentY < mMeasureHeight - mTitleHeightNoDisplay) {
                     mDarkFrameLayout.fade(
                             (int) ((1 - currentY / (mMeasureHeight - mTitleHeightNoDisplay)) * DarkFrameLayout.MAX_ALPHA));
@@ -255,8 +254,8 @@ public class SlideBottomPanel extends FrameLayout {
                 touchingView.offsetTopAndBottom((int) deltaY);
             } else {
                 float touchingViewY = ViewHelper.getY(touchingView);
-                if (touchingViewY + deltaY <= mMeasureHeight - mPanelHeight) {
-                    touchingView.offsetTopAndBottom((int) (mMeasureHeight - mPanelHeight - touchingViewY));
+                if (touchingViewY + deltaY <= mMeasureHeight - getmPanelHeight()) {
+                    touchingView.offsetTopAndBottom((int) (mMeasureHeight - getmPanelHeight() - touchingViewY));
                 } else if (touchingViewY + deltaY >= mMeasureHeight - mTitleHeightNoDisplay) {
                     touchingView.offsetTopAndBottom((int) (mMeasureHeight - mTitleHeightNoDisplay - touchingViewY));
                 } else {
@@ -276,9 +275,9 @@ public class SlideBottomPanel extends FrameLayout {
             isConsume = true;
         } else if (!isPanelShowing && downY <= mMeasureHeight - mTitleHeightNoDisplay) {
             isPanelOnTouch = false;
-        } else if (isPanelShowing && downY > mMeasureHeight - mPanelHeight) {
+        } else if (isPanelShowing && downY > mMeasureHeight - getmPanelHeight()) {
             isPanelOnTouch = true;
-        } else if (isPanelShowing && downY < mMeasureHeight - mPanelHeight) {
+        } else if (isPanelShowing && downY < mMeasureHeight - getmPanelHeight()) {
             hidePanel();
             isPanelOnTouch = false;
         }
@@ -340,7 +339,7 @@ public class SlideBottomPanel extends FrameLayout {
             mDarkFrameLayout.fade(true);
         }
         final View mPanel = findViewWithTag(TAG_PANEL);
-        ValueAnimator animator = ValueAnimator.ofFloat(ViewHelper.getY(mPanel), mMeasureHeight - mPanelHeight)
+        ValueAnimator animator = ValueAnimator.ofFloat(ViewHelper.getY(mPanel), mMeasureHeight - getmPanelHeight())
                 .setDuration(mAnimationDuration);
         animator.setTarget(mPanel);
         animator.setInterpolator(mOpenAnimationInterpolator);
@@ -474,8 +473,8 @@ public class SlideBottomPanel extends FrameLayout {
         for (int i = childCount - 1; i >= 0; i--) {
             final View child = parentView.getChildAt(i);
             if (x >= child.getLeft() && x < child.getRight() &&
-                    y >= child.getTop() + mMeasureHeight - mPanelHeight &&
-                    y < child.getBottom()  + mMeasureHeight - mPanelHeight) {
+                    y >= child.getTop() + mMeasureHeight - getmPanelHeight() &&
+                    y < child.getBottom()  + mMeasureHeight - getmPanelHeight()) {
                 return child;
             }
         }
@@ -579,5 +578,13 @@ public class SlideBottomPanel extends FrameLayout {
 
     public boolean isPanelShowing() {
         return isPanelShowing;
+    }
+
+    public float getmPanelHeight() {
+        return mPanelHeight;
+    }
+
+    public void setmPanelHeight(int mPanelHeightDp) {
+        this.mPanelHeight = dp2px(mPanelHeightDp);
     }
 }
